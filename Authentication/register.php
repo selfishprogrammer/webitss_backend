@@ -17,7 +17,9 @@ if ($nums_of_record > 0) {
 } else {
     $insert_data = mysqli_query($conn, "insert into `users` (`name`,`email`,`phone`,`password`,`categories`) values ('$name','$email','$phone','$password','$categories')");
     if ($insert_data) {
-        $msg = array('data' => 'Successfully Registered !', 'status' => 'true');
+        $getUserData = mysqli_query($conn, "select * from `users` where `email`='$email'");
+        $row = mysqli_fetch_assoc($getUserData);
+        $msg = array('data' => 'Successfully Registered !', 'status' => 'true', 'details' => $row);
         echo json_encode($msg);
     } else {
         $msg = array('data' => 'Something Went Wrong !', 'status' => 'false');

@@ -15,11 +15,11 @@ if ($nums_of_record > 0) {
     $nums = mysqli_num_rows($check_email_verified);
     if ($nums > 0) {
         $row = mysqli_fetch_assoc($check_login);
-        $msg = array('data' => 'Successfully LoggedIn !', 'status' => 'true',  'name' => $row['name'], 'email' => $row['email'], 'phone' => $row['phone'], 'password' => $row['password'], 'categories' => $row['categories'], 'user_id' => $row['user_id']);
+        $msg = array('data' => 'Successfully LoggedIn !', 'status' => 'true',  'details' => $row);
         echo json_encode($msg);
     } else {
         $row = mysqli_fetch_assoc($check_login);
-        $msg = array('data' => 'Please verify your email!', 'status' => 'notVerified', 'name' => $row['name'], 'email' => $row['email'], 'phone' => $row['phone'], 'password' => $row['password'], 'categories' => $row['categories'], 'user_id' => $row['user_id']);
+        $msg = array('data' => 'Please verify your email!', 'status' => 'notVerified', 'details' => $row);
         echo json_encode($msg);
     }
 } else {

@@ -1,2 +1,2 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "webitss");
+$conn = mysqli_connect("localhost", "root", "", "web");
